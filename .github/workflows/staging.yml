@@ -22,4 +22,3 @@ jobs:
           REMOTE_USER: ${{ secrets.STAGING_REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: ".git,.github,node_modules"
-          ARGS: -r
