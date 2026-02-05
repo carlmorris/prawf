@@ -15,7 +15,7 @@ jobs:
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
       - name: deploy theme via rsync
         run: |
-          rsync -avz --delete \
+          rsync -rvz \
             --exclude=".git" \
             --exclude="node_modules" \
             --exclude=".github" \
