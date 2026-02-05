@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Workspace
-        run: echo $GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE/prawf.txt
       # - uses: actions/checkout@v3
       # - name: Install npm dependencies
       #   run: npm install
