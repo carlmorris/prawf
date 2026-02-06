@@ -19,5 +19,5 @@ jobs:
             --exclude=".git" \
             --exclude="node_modules" \
             --exclude=".github" \
-            ${GITHUB_WORKSPACE}/ \
+            ${GITHUB_WORKSPACE} \
             ${{ secrets.STAGING_REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}
