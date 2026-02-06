@@ -7,17 +7,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-      - name: deploy theme via rsync
-        run: |
-          rsync -rvz \
-            --exclude=".git" \
-            --exclude="node_modules" \
-            --exclude=".github" \
-            ${GITHUB_WORKSPACE} \
-            ${{ secrets.STAGING_REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}
+      - name: Use Workspace
+        run: ls $GITHUB_WORKSPACE
+      # - uses: actions/checkout@v3
+      # - name: Install npm dependencies
+      #   run: npm install
+      # - name: Run build task
+      #   run: npm run build --if-present
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v5.1.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.STAGING_REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          EXCLUDE: ".git,.github,node_modules"
+          ARGS: -rltDzvO
