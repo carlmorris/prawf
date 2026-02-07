@@ -23,10 +23,10 @@ jobs:
           TARGET: ""
           EXCLUDE: ".git,.github,node_modules"
           ARGS: -rltDzvO
-          SCRIPT_BEFORE:
+          SCRIPT_BEFORE: |
             whoami
             ls -al
-          SCRIPT_AFTER:
+          SCRIPT_AFTER: |
             whoami
             ls -al
             echo $RSYNC_STDOUT
