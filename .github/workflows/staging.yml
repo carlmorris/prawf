@@ -20,7 +20,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.STAGING_REMOTE_USER }}
-          TARGET: /${{ github.event.repository.name }}
+          TARGET: ""
           EXCLUDE: ".git,.github,node_modules"
           ARGS: -rltDzvO
 
