@@ -25,10 +25,12 @@ jobs:
           EXCLUDE: ".git,.github,node_modules"
           ARGS: -rltDzvO
           SCRIPT_BEFORE: |
+            echo ${{ github.workspace }}
             whoami
             ls -al ".."
             ls -al ${{ secrets.FFOLDER }}
           SCRIPT_AFTER: |
+            echo ${{ github.workspace }}
             whoami
             ls -al
             ls -al ${{ secrets.FFOLDER }}
