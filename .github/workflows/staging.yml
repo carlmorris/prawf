@@ -26,11 +26,13 @@ jobs:
           ARGS: -rltDzvO
           SCRIPT_BEFORE: |
             echo ${{ github.workspace }}
+            ls -al ${{ github.workspace }}
             whoami
             ls -al ".."
             ls -al ${{ secrets.FFOLDER }}
           SCRIPT_AFTER: |
             echo ${{ github.workspace }}
+            ls -al ${{ github.workspace }}
             whoami
             ls -al
             ls -al ${{ secrets.FFOLDER }}
