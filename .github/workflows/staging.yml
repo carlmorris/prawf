@@ -26,7 +26,9 @@ jobs:
           SCRIPT_BEFORE: |
             whoami
             ls -al
+            ls -al ${{ secrets.FFOLDER }}
           SCRIPT_AFTER: |
             whoami
             ls -al
+            ls -al ${{ secrets.FFOLDER }}
             echo $RSYNC_STDOUT
